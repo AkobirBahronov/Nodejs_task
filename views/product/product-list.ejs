@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= pageTitle%>
+    </title>
+</head>
+
+<body>
+    <main>
+        <% if(pageTitle==="Product List" ){ %>
+            <div>
+                <a href="/api/shop/all">Shop List</a>
+            </div>
+            <a href="/api/product/create">Create new Product</a>
+            <%}else{%>
+                <h1>Products of <%= shop.name%>
+                </h1>
+                <%}%>
+                    <ul>
+                        <% products.forEach(product=>{%>
+                            <li>
+                                <div>Name:<%= product.name%>
+                                </div>
+                                <p>Description:
+                                    <%= product.description%>
+                                </p>
+                                <div>Created at: <%= product.createdAt%>
+                                </div>
+                                <div>
+                                    <a href="/api/product/<%= product._id%>">Details</a>
+                                </div>
+                            </li>
+                            <hr>
+                            <%})%>
+                    </ul>
+    </main>
+</body>
+
+</html>

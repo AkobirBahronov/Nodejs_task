@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= pageTitle%>
+    </title>
+</head>
+
+<body>
+    <main>
+        <div>
+            <a href="/api/product/all">Product List</a>
+        </div>
+        <a href="/api/shop/create">Create new Shop</a>
+        <ul>
+            <% shops.forEach(shop=>{%>
+                <li>
+                    <div>Shop name:<%= shop.name%>
+                    </div>
+                    <div>Created at: <%= shop.createdAt%>
+                    </div>
+                    <div>
+                        <a href="/api/shop/<%= shop._id%>">Details</a>
+                    </div>
+                    <form action="/api/shop/delete-shop/<%= shop._id%>" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+                <hr>
+                <%})%>
+        </ul>
+    </main>
+</body>
+
+</html>
